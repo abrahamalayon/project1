@@ -5,7 +5,7 @@
 #@author: abrah
 #"""
 import subprocess
-
+import datetime
 
 
 
@@ -14,7 +14,7 @@ import subprocess
 #I declared a set of global variables for use in the program
 #for the loop exit
 QUIT=11
-
+NOW = datetime.datetime.now()
 
     
 
@@ -92,9 +92,18 @@ def openfile():
    logfile = "samplelog.txt"
    subprocess.call(['less', filename], shell=False)
    #create a log entry
-   log = subprocess.check_output(['stat', filename])
+  # log = subprocess.check_output(['stat', filename])
    file1 = open("samplelog.txt", "a")
-   file1.write(str(log))
+   #file1.write(str(log))
+   #logging file access read
+   file1.write("\n")
+   file1.write("File ")
+   file1.write(str(filename))
+   file1.write(" has been opened and read by ")
+   username = subprocess.call(['whoami'], shell=False)
+   file1.write(str(username))
+   file1.write("\n")
+   file1.write(str(NOW))
    file1.close()
  
 # Append-adds at last
@@ -126,21 +135,41 @@ def writefile():
     openfile3.write(writestuff)
     openfile3.close()
     print("Text written to ", filename)
-    log = subprocess.check_output(['stat', filename])
+    #log = subprocess.check_output(['stat', filename])
     file1 = open("samplelog.txt", "a")
-    file1.write(str(log))
+    #file1.write(str(log))
+    # logging file write
+    file1.write("\n")
+    file1.write("File ")
+    file1.write(str(filename))
+    file1.write(" has been written to by ")
+    username = subprocess.call(['whoami'], shell=False)
+    file1.write(str(username))
+    file1.write("\n")
+    file1.write(str(NOW))
+   
+
     file1.close()
  
 def deletefile():
 
     print()
     filename=str(input("Enter a filename to delete: "))
-    log = subprocess.check_output(['stat', filename])
+    #log = subprocess.check_output(['stat', filename])
     file1 = open("samplelog.txt", "a")
-    file1.write(str(log))
-    file1.write("\n File deleted.\n")
+    #file1.write(str(log))
+    #file1.write("\n File deleted.\n")
+    #logging file deletion
+    file1.write("\n")
+    file1.write("File ")
+    file1.write(str(filename))
+    file1.write(" has been deleted by ")
+    username = subprocess.call(['whoami'], shell=False)
+    file1.write(str(username))
+    file1.write("\n")
+    file1.write(str(NOW))
     file1.close()
-    print("File access logged.")
+    print("File deletion logged.")
     subprocess.call(['rm', filename], shell=False)
     print()
     print("File ", filename, "deleted.")
@@ -154,29 +183,53 @@ def renamefile():
     subprocess.call(['mv', filename1, filename2], shell =False)
     print()
     print("File ", filename1, " has been renamed to ", filename2)
-    log = subprocess.check_output(['stat', filename2])
+    #log = subprocess.check_output(['stat', filename2])
     file1 = open("samplelog.txt", "a")
-    file1.write(str(log))
+    file1.write("\n")
+    file1.write("File ")
     file1.write(str(filename1))
-    file1.write(" renamed to ")
+    file1.write(" has been renamed to ")
     file1.write(str(filename2))
+    file1.write( " by ")
+    username = subprocess.call(['whoami'], shell=False)
+    file1.write(str(username))
+    file1.write("\n")
+    file1.write(str(NOW))
+    file1.close()
+    print("File renaming logged.")
+    
+    #file1.write(str(log))
+    #file1.write(str(filename1))
+    #file1.write(" renamed to ")
+    #file1.write(str(filename2))
     file1.close()
  
 def copyfile():
    print()
    filename=str(input("Enter the filename you wish to copy: "))
-   destination=str(input("Enter the destination for the copy: "))
+   destination=str(input("Enter the destination file or directory for the copy: "))
    subprocess.call(['cp', filename, destination], shell=False)
    print()
    print("File: ", filename, " has been copied to ", destination)
    print()
-   log = subprocess.check_output(['stat', filename])
+   #log = subprocess.check_output(['stat', filename])
    file1 = open("samplelog.txt", "a")
-   file1.write(str(log))
+   file1.write("\n")
+   file1.write("File ")
+   file1.write(str(filename))
+   file1.write(" has been copied to ")
+   file1.write(str(destination))
+   file1.write( " by ")
+   username = subprocess.call(['whoami'], shell=False)
+   file1.write(str(username))
+   file1.write("\n")
+   file1.write(str(NOW))
+   print("File copy logged.")
+   #file1.write(str(log))
    file1.close()
  
 def downloadfile():
-    print("LDAP required.")
+    print("OpenLDAP required to use this function.")
 def viewcontents():
    
    print("skip")
