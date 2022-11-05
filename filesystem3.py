@@ -6,7 +6,7 @@
 #"""
 import subprocess
 import datetime
-
+from subprocess import check_output
 
 
 #Please undock console when running program to see full
@@ -16,7 +16,7 @@ import datetime
 QUIT=11
 NOW = datetime.datetime.now()
 
-    
+
 
 
 
@@ -93,19 +93,28 @@ def openfile():
    subprocess.call(['less', filename], shell=False)
    #create a log entry
   # log = subprocess.check_output(['stat', filename])
-   file1 = open("samplelog.txt", "a")
+   #file1 = open("samplelog.txt", "a")
    #file1.write(str(log))
    #logging file access read
-   file1.write("\n")
-   file1.write("File ")
-   file1.write(str(filename))
-   file1.write(" has been opened and read by ")
-   username = subprocess.call(['whoami'], shell=False)
-   file1.write(str(username))
-   file1.write("\n")
-   file1.write(str(NOW))
-   file1.close()
- 
+   #file1.write("\n")
+   #file1.write("File ")
+   #file1.write(str(filename))
+   #file1.write(" has been opened and read by ")
+   #new logging system
+   phrase = str("has been opened and read ")
+   path_bytes = check_output('pwd', shell=True)
+   blank = path_bytes.decode('utf-8')
+   path_bytes2 = check_output('whoami', shell=True)
+   username = path_bytes2.decode('utf-8')
+   logwrite(filename, phrase, blank, username)
+   #old logging system
+   #username = str(subprocess.call(['whoami'], shell=False))
+   #blank = str(subprocess.call(["pwd"], shell=False))
+   #file1.write(str(username))
+   #file1.write("\n")
+   #file1.write(str(NOW))
+   #file1.close()
+   
 # Append-adds at last
    #file1 = open("myfile.txt", "a")  # append mode
    #file1.write("Today \n")
@@ -136,20 +145,26 @@ def writefile():
     openfile3.close()
     print("Text written to ", filename)
     #log = subprocess.check_output(['stat', filename])
-    file1 = open("samplelog.txt", "a")
+   # file1 = open("samplelog.txt", "a")
     #file1.write(str(log))
     # logging file write
-    file1.write("\n")
-    file1.write("File ")
-    file1.write(str(filename))
-    file1.write(" has been written to by ")
-    username = subprocess.call(['whoami'], shell=False)
-    file1.write(str(username))
-    file1.write("\n")
-    file1.write(str(NOW))
-   
+    #file1.write("\n")
+    #file1.write("File ")
+    #file1.write(str(filename))
+    #file1.write(" has been written to by ")
+    #username = subprocess.call(['whoami'], shell=False)
+    #file1.write(str(username))
+    #file1.write("\n")
+    #file1.write(str(NOW))
+    phrase = str(" has been written to ")
+    path_bytes = check_output('pwd', shell=True)
+    blank = path_bytes.decode('utf-8')
+    path_bytes2 = check_output('whoami', shell=True)
+    username = path_bytes2.decode('utf-8')
+    logwrite(filename, phrase, blank, username)
 
-    file1.close()
+
+    #file1.close()
  
 def deletefile():
 
@@ -160,15 +175,25 @@ def deletefile():
     #file1.write(str(log))
     #file1.write("\n File deleted.\n")
     #logging file deletion
-    file1.write("\n")
-    file1.write("File ")
-    file1.write(str(filename))
-    file1.write(" has been deleted by ")
-    username = subprocess.call(['whoami'], shell=False)
-    file1.write(str(username))
-    file1.write("\n")
-    file1.write(str(NOW))
-    file1.close()
+    #new log system
+    phrase = str(" has been deleted from ")
+    path_bytes = check_output('pwd', shell=True)
+    blank = path_bytes.decode('utf-8')
+    path_bytes2 = check_output('whoami', shell=True)
+    username = path_bytes2.decode('utf-8')
+    logwrite(filename, phrase, blank, username)
+
+
+    # old log system
+    #file1.write("\n")
+    #file1.write("File ")
+    #file1.write(str(filename))
+    #file1.write(" has been deleted by ")
+    #username = subprocess.call(['whoami'], shell=False)
+    #file1.write(str(username))
+    #file1.write("\n")
+    #file1.write(str(NOW))
+    #file1.close()
     print("File deletion logged.")
     subprocess.call(['rm', filename], shell=False)
     print()
@@ -244,6 +269,24 @@ def viewlogs():
         #create logs by appending to file in each function.
         # save in log file
 
+#function to write logs
+def logwrite(var1, phrase, var2, var3):
+
+   file1 = open("samplelog.txt", "a")
+   file1.write("\n")
+   file1.write("File ")
+   file1.write(str(var1))
+   file1.write(" has been ")
+   file1.write(str(phrase))
+   file1.write( " to ")
+   #username = subprocess.call(['whoami'], shell=False)
+   file1.write(str(var2))
+   file1.write(" by ")
+   file1.write(str(var3))
+   file1.write("\n")
+   file1.write(str(NOW))
+   file1.write("\n")
+   file1.write("          -- End of Log --             ")
 
 # 11) Exit the program menu
 # a. (* do not use ‘break’)
