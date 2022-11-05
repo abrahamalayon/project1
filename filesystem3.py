@@ -273,12 +273,29 @@ def downloadfile():
     print("OpenLDAP required to use this function.")
 def viewcontents():
    
-   print("skip")
+   #view contents of a directory of user's choice
+   directoryvar= input("Enter the path or name of a directory you want to view: ")
+   subprocess.call(['ls', directoryvar], shell=False)
+   phrase = str("has viewed the contents of the directory")
+   blank= str(" ")
+   
+   path_bytes2 = check_output('whoami', shell=True)
+   username = path_bytes2.decode('utf-8')
+   logwrite(username, phrase, directoryvar, blank)
+
    
 def makedirectory():
   
-    #lookup how mkdir works in linux for making and renanming 
-    print("pass")
+    #make a directory. can make multiple directories with {dir1,dir2,dir3}
+    newdir=input("Enter the path or directory name you wish to create: ")
+    subprocess.call(['mkdir', newdir], shell=False)
+    #new logging system
+    phrase = str("has made a new directory at")
+    blank= str(" ")
+    path_bytes2 = check_output('whoami', shell=True)
+    username = path_bytes2.decode('utf-8')
+    logwrite(username, phrase, newdir, blank)
+    print("Directory ", newdir, " created.")
 
 def viewlogs():
     subprocess.call(['less', 'samplelog.txt'], shell=False)  
@@ -290,9 +307,9 @@ def logwrite(var1, phrase, var2, var3):
 
    file1 = open("samplelog.txt", "a")
    file1.write("\n")
-   file1.write("File ")
+   #file1.write("File ")
    file1.write(str(var1))
-   file1.write(" has been ")
+   #file1.write(" has been ")
    file1.write(str(phrase))
    file1.write( " to ")
    #username = subprocess.call(['whoami'], shell=False)
