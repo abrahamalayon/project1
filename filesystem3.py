@@ -7,6 +7,7 @@
 import subprocess
 import datetime
 from subprocess import check_output
+import os
 
 
 #Please undock console when running program to see full
@@ -89,7 +90,7 @@ def main():
 def openfile():
    filename = str(input("Enter a filename: "))
    
-   logfile = "samplelog.txt"
+   #logfile = "samplelog.txt"
    subprocess.call(['less', filename], shell=False)
    #create a log entry
   # log = subprocess.check_output(['stat', filename])
@@ -275,13 +276,17 @@ def changedir():
    
    #change to a directory of user's choice
    directoryvar= str(input("Enter the path or name of a directory you want to change to: "))
-   subprocess.call('ls', shell=True, cwd=directoryvar)
+   #use os module to change current directory while running script, makes other directories searchable
+   os.chdir(directoryvar)
    #new logging system
    phrase = str(" has changed current directory to ")
    blank= str(" ")
    
    path_bytes2 = check_output('whoami', shell=True)
    username = path_bytes2.decode('utf-8')
+   #use os module to get current directory to print out
+   cwd = os.getcwd()
+   print("Directory is now ", cwd)
    logwrite(username, phrase, directoryvar, blank)
 
    
