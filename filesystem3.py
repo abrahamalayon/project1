@@ -101,12 +101,12 @@ def openfile():
    #file1.write(str(filename))
    #file1.write(" has been opened and read by ")
    #new logging system
-   phrase = str("has been opened and read")
+   phrase = str(" has opened the directory and file ")
    path_bytes = check_output('pwd', shell=True)
    blank = path_bytes.decode('utf-8')
    path_bytes2 = check_output('whoami', shell=True)
    username = path_bytes2.decode('utf-8')
-   logwrite(filename, phrase, blank, username)
+   logwrite(username, phrase, blank, filename)
    #old logging system
    #username = str(subprocess.call(['whoami'], shell=False))
    #blank = str(subprocess.call(["pwd"], shell=False))
