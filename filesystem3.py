@@ -304,8 +304,8 @@ def makedirectory():
     print("Directory ", newdir, " created.")
 
 def viewlogs():
-    subprocess.call(['less', 'samplelog.txt'], shell=False)  
-        #create logs by appending to file in each function.
+    #write the log first
+    #create logs by appending to file in each function.
         
         # save in log file
     phrase = str("has viewed the logs!")
@@ -315,11 +315,15 @@ def viewlogs():
     path_bytes2 = check_output('whoami', shell=True)
     username = path_bytes2.decode('utf-8')
     logwrite(username, phrase, blank, blank2)
+    #call the command to view the logs
+    subprocess.call(['less', '/tmp/sfssamplelog.txt'], shell=False)  
+     
+    
    
 #function to write logs
 def logwrite(var1, phrase, var2, var3):
 
-   file1 = open("samplelog.txt", "a")
+   file1 = open("/tmp/sfssamplelog.txt", "a")
    file1.write("\n")
    #file1.write("File ")
    file1.write(str(var1))
