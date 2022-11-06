@@ -33,7 +33,7 @@ def optionmenu(option):
     print("5. Rename a File")
     print("6. Copy a File")
     print("7. Download a File") 
-    print("8. View contents of Directory")
+    print("8. Change Directory")
     print("9. Make a new Directory")
     print("10.View logs")
     print("11. QUIT")
@@ -71,7 +71,7 @@ def main():
         elif menu_choice=='7':
             downloadfile()
         elif menu_choice=='8':
-            viewcontents()
+            changedir()
         elif menu_choice=='9':
             makedirectory()
         elif menu_choice=='10':
@@ -271,12 +271,13 @@ def copyfile():
  
 def downloadfile():
     print("OpenLDAP required to use this function.")
-def viewcontents():
+def changedir():
    
-   #view contents of a directory of user's choice
-   directoryvar= input("Enter the path or name of a directory you want to view: ")
-   subprocess.call(['ls', directoryvar], shell=False)
-   phrase = str("has viewed the contents of the directory")
+   #change to a directory of user's choice
+   directoryvar= str(input("Enter the path or name of a directory you want to change to: "))
+   subprocess.call('ls', shell=True, cwd=directoryvar)
+   #new logging system
+   phrase = str(" has changed current directory to ")
    blank= str(" ")
    
    path_bytes2 = check_output('whoami', shell=True)
@@ -319,10 +320,10 @@ def logwrite(var1, phrase, var2, var3):
    file1.write(str(var1))
    #file1.write(" has been ")
    file1.write(str(phrase))
-   file1.write( " to ")
+   #file1.write( " to ")
    #username = subprocess.call(['whoami'], shell=False)
    file1.write(str(var2))
-   file1.write(" by ")
+   #file1.write(" by ")
    file1.write(str(var3))
    file1.write("\n")
    file1.write(str(NOW))
