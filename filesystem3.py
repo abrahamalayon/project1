@@ -316,14 +316,14 @@ def viewlogs():
     username = path_bytes2.decode('utf-8')
     logwrite(username, phrase, blank, blank2)
     #call the command to view the logs
-    subprocess.call(['less', '/tmp/sfssamplelog.txt'], shell=False)  
+    subprocess.call(['less', '/var/sfssamplelog.txt'], shell=False)  
      
     
    
 #function to write logs
 def logwrite(var1, phrase, var2, var3):
 
-   file1 = open("/tmp/sfssamplelog.txt", "a")
+   file1 = open("/var/sfssamplelog.txt", "a")
    file1.write("\n")
    #file1.write("File ")
    file1.write(str(var1))
@@ -345,6 +345,3 @@ def logwrite(var1, phrase, var2, var3):
 
 if __name__=='__main__':
     main()
-
-
-
