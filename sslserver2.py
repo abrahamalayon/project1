@@ -122,7 +122,7 @@ def deal_with_client(sClientconn, f):
             sClientconn.close()
     #logging system for upload
     phrase = str(" has uploaded the file ")
-   
+    username = f
     blank = " "
     filename = " "
     logwrite(username, phrase, blank, filename)
