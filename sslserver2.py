@@ -2,6 +2,12 @@
 #Load Server Certificate to be shared via TLS handshake to client
 
 import socket, ssl
+import datetime
+
+
+#global variable to get date and time
+
+NOW = datetime.datetime.now()
 
 #Creating users
 admin_dict = {
@@ -118,7 +124,7 @@ def deal_with_client(sClientconn, f):
     phrase = str(" has uploaded the file ")
    
     blank = " "
-    filename = data
+    filename = " "
     logwrite(username, phrase, blank, filename)
 
 
