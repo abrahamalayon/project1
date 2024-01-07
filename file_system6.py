@@ -283,39 +283,36 @@ def downloadfile():
     
     #I also used a server from TurnKeyLinux
 
-    # Ask the user for the ldap server address, port, username, password, and file name
-    server_address = input("Enter the ldap server address: ")
-    server_port = int(input("Enter the ldap server port: "))
-    username = input("Enter your ldap username: ")
-    password = input("Enter your ldap password: ")
+    #Ask the user for the LDAP server address, port, username, password, and file name
+    server_address = input("Enter the LDAP Server Address: ")
+    server_port = int(input("Enter the LDAP Server Port: "))
+    username = input("Enter your LDAP Username: ")
+    password = input("Enter your LDAP Password: ")
     file_name = input("Enter the file name to download: ")
 
-    # Create a server object with the address and port
+    #Create a server object with the address and port
     server = ldap3.Server(server_address, port=server_port)
     #Create a connection object with the username and password
     connection = ldap3.Connection(server, user=username, password=password)
-    # Bind the connection to the server
+    #Bind the connection to the server
     connection.bind()
-    # Search for the file in the server
+    #Search for the file in the server
     connection.search(search_base='cn=files,dc=example,dc=com', search_filter=f'(cn={file_name})', attributes=['*'])
-    # Check if the file exists
+    #Check if the file exists
     if connection.response:
-    # Get the file content from the response
+    #Get the file content from the response
         file_content = connection.response[0]['attributes']['fileContent']
-
-    # Write the file content to a local file
+    #Write the file content to a local file
         with open(file_name, 'wb') as f:
             f.write(file_content)
-
-    # Tell the user if the file was downloaded
+    #Notify user if the file was downloaded
         print(f"File {file_name} downloaded successfully.")
     
     else:
-    # Tell the user if the file was not found on LDAP server
+    #Notify user if the file was not found on LDAP server
         print("File Not Found on LDAP Server.")
 
-
-  # Unbind the connection
+  #Unbind the connection
     connection.unbind()
 
 def changedir():
