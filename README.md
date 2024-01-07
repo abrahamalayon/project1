@@ -6,7 +6,9 @@ file_system6.py
 
 "file_system6.py" runs on Linux (Ubuntu or Kali) and needs sudo privileges.
 
-to run the program, type:      sudo python3 file_system6.py
+to run the program, type:      
+
+sudo python3 file_system6.py
 
 This was a project for an OS class in Fall 2022.  I wrote the program "file_system6.py" myself. The objective of the project was to write a file system program with LDAP functionality, with the ability to download files from an LDAP server. Upload as well as Encryption will be added using LDAPS.  I know the logging system is not the "right" way to create logs, but it is what I did at the time.  There is a logging function that works better.
 
