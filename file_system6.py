@@ -16,7 +16,7 @@ import requests
 # program output.
 #I declared a set of global variables for use in the program
 #for the loop exit
-QUIT=11
+QUIT=12
 NOW = datetime.datetime.now()
 
 
@@ -35,11 +35,13 @@ def optionmenu(option):
     print("4. Delete a File")
     print("5. Rename a File")
     print("6. Copy a File")
-    print("7. Download a File") 
-    print("8. Change Directory")
+    print("7. Download a File from LDAP") 
+    print("8. Query LDAP Directory")
     print("9. Make a new Directory")
     print("10.View logs")
-    print("11. QUIT")
+    print("11. Change Directory") 
+    
+    print("12. QUIT")
     option=input("Enter a menu option: ")
     return option
 
@@ -74,11 +76,13 @@ def main():
         elif menu_choice=='7':
             downloadfile()
         elif menu_choice=='8':
-            changedir()
+            ldapquery()
         elif menu_choice=='9':
             makedirectory()
         elif menu_choice=='10':
             viewlogs()
+        elif menu_choice=='11':
+            changedir()
         else:  
             # Note that I used "=" instead of "=="
             # to exit the loop. because i am setting
@@ -272,6 +276,52 @@ def copyfile():
    #file1.write(str(log))
    #file1.close()
  
+
+# Define a function to query an ldap server using ldap3
+def ldapquery():
+
+  # Ask the user for the ldap server address, port, username, password, search base, and filter
+  server_address = input("Enter the LDAP Server Address: ")
+  server_port = int(input("Enter the LDAP Server port: "))
+  username = input("Enter your LDAP Username: ")
+  password = input("Enter your LDAP Password: ")
+  search_base = input("Enter the Search Base: ")
+  #search_filter = input("Enter the Search Filter: ")
+
+  #Create a server object with the address and port
+  server = ldap3.Server(server_address, port=server_port)
+  #Create a connection object with the username and password
+  connection = ldap3.Connection(server, user=username, password=password)
+  
+  
+
+   # Perform a simple bind with no authentication
+  connection.bind ()
+
+   # Define the search base and filter
+   #search_base = "dc=example,dc=com"
+  search_filter = " (objectClass=*)"
+
+   # Perform the search with the base and filter
+  connection.search (search_base, search_filter)
+
+   # Print the search results
+  print (connection.response)
+
+   # Unbind the connection
+  connection.unbind ()
+  
+  
+  #Bind the connection to the server
+  #connection.bind()
+  #Perform the search with the given base and filter
+  #connection.search(search_base, search_filter)
+  #Print the search results
+  #print(connection.response)
+  #Unbind the connection
+  #connection.unbind()
+
+
 def downloadfile():
     #The program assumes there is an OpenLDAP VM/Server running.  
     #I used one the following website: https://www.forumsys.com/2022/05/10/online-ldap-test-server/
@@ -283,36 +333,39 @@ def downloadfile():
     
     #I also used a server from TurnKeyLinux
 
-    #Ask the user for the LDAP server address, port, username, password, and file name
-    server_address = input("Enter the LDAP Server Address: ")
-    server_port = int(input("Enter the LDAP Server Port: "))
-    username = input("Enter your LDAP Username: ")
-    password = input("Enter your LDAP Password: ")
+    # Ask the user for the ldap server address, port, username, password, and file name
+    server_address = input("Enter the ldap server address: ")
+    server_port = int(input("Enter the ldap server port: "))
+    username = input("Enter your ldap username: ")
+    password = input("Enter your ldap password: ")
     file_name = input("Enter the file name to download: ")
 
-    #Create a server object with the address and port
+    # Create a server object with the address and port
     server = ldap3.Server(server_address, port=server_port)
     #Create a connection object with the username and password
     connection = ldap3.Connection(server, user=username, password=password)
-    #Bind the connection to the server
+    # Bind the connection to the server
     connection.bind()
-    #Search for the file in the server
-    connection.search(search_base='cn=files,dc=example,dc=com', search_filter=f'(cn={file_name})', attributes=['*'])
-    #Check if the file exists
+    # Search for the file in the server
+    connection.search(search_base='cn=read-only-admin,dc=example,dc=com', search_filter=f'(cn={file_name})', attributes=['*'])
+    # Check if the file exists
     if connection.response:
-    #Get the file content from the response
+    # Get the file content from the response
         file_content = connection.response[0]['attributes']['fileContent']
-    #Write the file content to a local file
+
+    # Write the file content to a local file
         with open(file_name, 'wb') as f:
             f.write(file_content)
-    #Notify user if the file was downloaded
+
+    # Tell the user if the file was downloaded
         print(f"File {file_name} downloaded successfully.")
     
     else:
-    #Notify user if the file was not found on LDAP server
+    # Tell the user if the file was not found on LDAP server
         print("File Not Found on LDAP Server.")
 
-  #Unbind the connection
+
+  # Unbind the connection
     connection.unbind()
 
 def changedir():
