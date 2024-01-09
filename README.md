@@ -10,7 +10,7 @@ to run the program, type:
 
 sudo python3 file_system6.py
 
-This program is a file explorer for Linux.  It has basic functionality such as viewing and writing files, changing directories as well as querying and downloading from an LDAP directory and more.
+This program is a file explorer for Linux.  It has basic functionality such as viewing and writing files, changing directories as well as querying and downloading from an LDAP directory and more.  In this version data is sent to the LDAP server in the clear.
 
 This was a project for an Operating Systems class in Fall 2022.  I wrote the program "file_system6.py" myself. The objective of the project was to write a file system program with LDAP functionality, with the ability to download files from an LDAP server. Upload as well as Encryption will be added using LDAPS. Updates coming to logging system as well.
 
