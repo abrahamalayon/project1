@@ -5,7 +5,7 @@ A Python program that simulates a file system with LDAP functionality.
 
 ## Description
 
-This program allows you to create, modify, and delete files and directories in a virtual file system. You can also navigate through the file system using commands such as cd, ls, pwd, etc. The program also allows you to query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc.
+This program allows you to create, modify, and delete files and directories on your Linux file system. You can also navigate through the file system using commands such as cd, ls, pwd, etc. The program also allows you to query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc. It writes a log in the var directory.  It will make changes to your system (i.e delete files, create files) so be careful.
 
 ## Installation
 
