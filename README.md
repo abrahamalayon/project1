@@ -1,5 +1,5 @@
 
-# File System with LDAP
+# SimpleFileSystem with LDAP
 
 A Python program that simulates a file system with LDAP functionality.
 
