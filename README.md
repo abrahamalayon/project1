@@ -43,18 +43,31 @@ Enter a menu option:
 The program enters the following commands based on your input. 
 
 mkdir <dir>: Creates a new directory with the given name.
+
 rmdir <dir>: Removes an existing directory with the given name.
+
 cd <dir>: Changes the current working directory to the given directory.
+
 ls: Lists the files and directories in the current working directory.
+
 pwd: Prints the path of the current working directory.
+
 touch <file>: Creates a new file with the given name.
+
 rm <file>: Removes an existing file with the given name.
+
 cat <file>: Prints the contents of a file to the standard output.
+
 echo <text>: Prints the given text to the standard output.
+
 cp <src> <dest>: Copies a file from the source to the destination.
+
 mv <src> <dest>: Moves a file from the source to the destination.
+
 find <name>: Searches for a file or directory with the given name in the file system.
+
 12 exits the program
+
 You can also use the following operators to modify the behavior of the commands:
 
 >: Redirects the standard output of a command to a file. For example, echo hello > file.txt will write the word “hello” to the file.txt file.
