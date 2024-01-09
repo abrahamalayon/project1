@@ -23,9 +23,24 @@ sudo python3 file_system6.py
 
 ## Usage
 
+You will see the following menu options. enter a number.
 
+Menu options:
+1. Open a File
+2. View Files
+3. Write to a File
+4. Delete a File
+5. Rename a File
+6. Copy a File
+7. Download a File from LDAP
+8. Query LDAP Directory
+9. Make a new Directory
+10. View Logs
+11. Change Directory
+12. QUIT
+Enter a menu option:  
 
-The program enters the following commands based on your input. There are options 1-12.
+The program enters the following commands based on your input. 
 
 mkdir <dir>: Creates a new directory with the given name.
 rmdir <dir>: Removes an existing directory with the given name.
@@ -72,7 +87,7 @@ https://www.turnkeylinux.org/openldap
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE] file for more details.
+
 
 ## Contributing
 
