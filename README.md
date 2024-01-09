@@ -1,20 +1,36 @@
-# project1
 
-Jan 7 2024
+# File System with LDAP
 
-file_system6.py
+A Python program that simulates a file system with LDAP functionality.
 
-"file_system6.py" runs on Linux (Ubuntu or Kali) and needs sudo privileges.
+## Description
 
-to run the program, type:      
+This program allows you to create, modify, and delete files and directories in a virtual file system. You can also navigate through the file system using commands such as cd, ls, pwd, etc. The program also allows you to query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc.
 
+## Installation
+
+To install and run this program, you need to have Python 3 installed on your system. You can download Python 3 from [here]. You also need to clone this repository to your local machine using the following command:
+
+```bash
+git clone https://github.com/abrahamalayon/project1.git
+```
+
+Then, you need to run the program with sudo privileges, as it needs to access the system files and directories. You can do that by executing the file_system6.py file:
+
+```bash
 sudo python3 file_system6.py
+```
 
-This program is a file explorer for Linux.  It has basic functionality such as viewing and writing files, changing directories as well as querying and downloading from an LDAP directory and more.  In this version data is sent to the LDAP server in the clear.
+## Usage
 
-This was a project for an Operating Systems class in Fall 2022.  I wrote the program "file_system6.py" myself. The objective of the project was to write a file system program with LDAP functionality, with the ability to download files from an LDAP server. Upload as well as Encryption will be added using LDAPS. Updates coming to logging system as well.
 
-I tested the LDAP functionality with the following site:  
+
+Examples of LDAP syntax are below.  For example, the search base may be "dc=example,dc=com" when prompted for search base.  :
+
+- `ldapsearch <base> <filter>`: Searches for entries in the LDAP server that match the given base and filter. The base is the starting point of the search, and the filter is the criteria for selecting entries. For example, `ldapsearch "dc=example,dc=com" "(objectClass=person)"` will search for all entries that are persons in the example.com domain.
+- `ldapdownload <base> <filter> <file>`: Downloads a file from the LDAP server that matches the given base and filter, and saves it to the file system with the given name. The base and filter are the same as in the ldapsearch command. For example, `ldapdownload "dc=example,dc=com" "(cn=alice)" alice.txt` will download the file associated with the entry that has the common name alice in the example.com domain, and save it as alice.txt in the file system.
+
+You can test the LDAP functionality with the following site:
 
 https://www.forumsys.com/2022/05/10/online-ldap-test-server/
 
@@ -30,9 +46,21 @@ You can also download a VM from the following site to test the program:
 
 https://www.turnkeylinux.org/openldap
 
+## License
 
-sslserver
+This project is licensed under the MIT License. See the [LICENSE] file for more details.
 
-The program "sslserver" was an another part of the same project where I combined my logging system from "file_system" with my partners' SSL socket.  The sslsocket's client was meant to be combined with "file_system6.py".  My partners wrote the "client" and I assisted with the "sslserver".  
+## Contributing
 
-Abraham Alayon
+This project is open for contributions. If you want to contribute, please follow these steps:
+
+- Fork this repository and clone it to your local machine.
+- Create a new branch with a descriptive name
+- Make your changes and commit them with a clear message
+- Push your branch to your forked repository
+- Create a pull request to the original repository
+- Wait for feedback and approval
+
+## Credits
+
+This project was created by Abraham Alayon. The file_system6.py program was written by Abraham Alayon. The project was based on the specifications and requirements of the Operating Systems class.
