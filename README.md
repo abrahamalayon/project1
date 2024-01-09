@@ -25,6 +25,30 @@ sudo python3 file_system6.py
 
 
 
+The program enters the following commands based on your input. There are options 1-12.
+
+mkdir <dir>: Creates a new directory with the given name.
+rmdir <dir>: Removes an existing directory with the given name.
+cd <dir>: Changes the current working directory to the given directory.
+ls: Lists the files and directories in the current working directory.
+pwd: Prints the path of the current working directory.
+touch <file>: Creates a new file with the given name.
+rm <file>: Removes an existing file with the given name.
+cat <file>: Prints the contents of a file to the standard output.
+echo <text>: Prints the given text to the standard output.
+cp <src> <dest>: Copies a file from the source to the destination.
+mv <src> <dest>: Moves a file from the source to the destination.
+find <name>: Searches for a file or directory with the given name in the file system.
+12 exits the program
+You can also use the following operators to modify the behavior of the commands:
+
+>: Redirects the standard output of a command to a file. For example, echo hello > file.txt will write the word “hello” to the file.txt file.
+<: Redirects the standard input of a command from a file. For example, cat < file.txt will print the contents of the file.txt file to the standard output.
+|: Pipes the standard output of one command to the standard input of another command. For example, cat file.txt | wc -l will print the number of lines in the file.txt file.
+&: Runs a command in the background, allowing you to enter another command without waiting for the first one to finish. For example, sleep 10 & will make the program wait for 10 seconds in the background, while you can enter another command in the foreground.
+
+
+
 Examples of LDAP syntax are below.  For example, the search base may be "dc=example,dc=com" when prompted for search base.  :
 
 - `ldapsearch <base> <filter>`: Searches for entries in the LDAP server that match the given base and filter. The base is the starting point of the search, and the filter is the criteria for selecting entries. For example, `ldapsearch "dc=example,dc=com" "(objectClass=person)"` will search for all entries that are persons in the example.com domain.
