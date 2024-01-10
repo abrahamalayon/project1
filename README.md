@@ -1,7 +1,7 @@
 
 # SimpleFileSystem with LDAP
 
-A Python program that manipulates a Linux file system and LDAP Server.
+A Python script that manipulates a Linux file system and LDAP Server.
 
 ## Description
 
