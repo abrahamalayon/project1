@@ -5,9 +5,9 @@ A Python script that manipulates the Linux file system and an LDAP Server.
 
 ## Description
 
-SimpleFileSystem was developed for a class project. This script allows you to create, modify, and delete files and directories on your Linux file system. You can also navigate through the file system and read files, rename and copy files too. In addition the script allows you to authenticate to, query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc. It writes a log in the var directory.  In the current version, traffic to LDAP is unencrypted. This script will make changes to your system (i.e delete files, create files) so be careful.
+SimpleFileSystem is under development as a personal project. This script allows you to create, modify, and delete files and directories on your Linux file system. You can also navigate through the file system and read files, rename and copy files too. In addition the script allows you to authenticate to, query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc. It writes a log in the var directory.  In the current version, traffic to LDAP is unencrypted. This script will make changes to your system (i.e delete files, create files) so be careful.
 
-The purpose behind the program is to demonstrate using a script to execute commands on the operating system as well as some security goals, which I am in the process of improving. The traffic is unencrypted to allow observation of packets with Wireshark. The next phase is to add support for LDAPS as well as the find function in Linux. SimpleFileSystem is still being developed as a personal project.
+The purpose behind the program is to demonstrate using a script to execute commands on the operating system as well as some security goals, which I am in the process of improving. The traffic is unencrypted to allow observation of packets with Wireshark. The next phase is to add support for LDAPS as well as the find function in Linux.
 
 ## Installation
 
@@ -90,7 +90,7 @@ Examples of LDAP syntax are below.  For example, the search base may be "dc=exam
 
 https://ldap3.readthedocs.io/en/latest/  
 
-Here is an excerpt of relevant information:
+Here is an excerpt of relevant information so you can understand the search base and search filter:
 
 
 - `ldapsearch <base> <filter>`: Searches for entries in the LDAP server that match the given base and filter. The base is the starting point of the search, and the filter is the criteria for selecting entries. For example, `ldapsearch "dc=example,dc=com" "(objectClass=person)"` will search for all entries that are persons in the example.com domain.
@@ -129,4 +129,4 @@ This project is open for contributions. If you want to contribute, please follow
 
 ## Credits
 
-This project was created by Abraham Alayon. The file_system6.py, filesystem2.py and filesystem3.py program was written by Abraham Alayon. 
+This project was created by Abraham Alayon. The file_system6.py, filesystem2.py and filesystem3.py program was written by Abraham Alayon.
