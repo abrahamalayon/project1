@@ -7,6 +7,8 @@ A Python program that simulates a file system with LDAP functionality.
 
 This program allows you to create, modify, and delete files and directories on your Linux file system. You can also navigate through the file system read files, etc. The program also allows you to authenticate to, query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc. It writes a log in the var directory.  In the current version, traffic to LDAP is unencrypted. It will make changes to your system (i.e delete files, create files) so be careful.
 
+The purpose behind the program is to demonstrate accountability, authentication, nonrepudiation and eventually confidentiality, integrity.  The traffic is unencrypted to allow observation of packets with Wireshark.  But it should not be used for anything other than demonstration.
+
 ## Installation
 
 To install and run this program, you need to have Python 3 installed on your system. You can download Python 3 from [here]. You also need to clone this repository to your local machine using the following command:
