@@ -419,7 +419,7 @@ def viewlogs():
 #function to write logs
 def logwrite(var1, phrase, var2, var3):
 
-   file1 = open("/var/sfssamplelog.txt", "a")
+   file1 = open("/var/log/sfssamplelog.log", "a")
    file1.write("\n")
    #file1.write("File ")
    file1.write(str(var1))
