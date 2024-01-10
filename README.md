@@ -40,6 +40,7 @@ Menu options:
 10. View Logs
 11. Change Directory
 12. QUIT
+
 Enter a menu option:  
 
 The program enters the following commands based on your input. 
