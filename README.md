@@ -71,11 +71,15 @@ find <name>: Searches for a file or directory with the given name in the file sy
 
 12 exits the program
 
-You can also use the following operators to modify the behavior of the commands:
+The input is not sanitized in this version. Therefore you can also use the following operators to modify the behavior of the commands, in addition to flags and arguments:
+
 
 >: Redirects the standard output of a command to a file. For example, echo hello > file.txt will write the word “hello” to the file.txt file.
+>
 <: Redirects the standard input of a command from a file. For example, cat < file.txt will print the contents of the file.txt file to the standard output.
+
 |: Pipes the standard output of one command to the standard input of another command. For example, cat file.txt | wc -l will print the number of lines in the file.txt file.
+
 &: Runs a command in the background, allowing you to enter another command without waiting for the first one to finish. For example, sleep 10 & will make the program wait for 10 seconds in the background, while you can enter another command in the foreground.
 
 
