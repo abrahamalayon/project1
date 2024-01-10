@@ -43,7 +43,7 @@ Menu options:
 
 Enter a menu option:  
 
-The program enters the following commands based on your input. 
+The program executes the following commands based on your input. 
 
 mkdir <dir>: Creates a new directory with the given name.
 
