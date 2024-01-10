@@ -347,7 +347,7 @@ def downloadfile():
     # Bind the connection to the server
     connection.bind()
     # Search for the file in the server
-    connection.search(search_base='cn=read-only-admin,dc=example,dc=com', search_filter=f'(cn={file_name})', attributes=['*'])
+    connection.search(search_base='cn=files,dc=example,dc=com', search_filter=f'(cn={file_name})', attributes=['*'])
     # Check if the file exists
     if connection.response:
     # Get the file content from the response
