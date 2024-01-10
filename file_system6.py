@@ -433,7 +433,7 @@ def logwrite(var1, phrase, var2, var3):
    file1.write("\n")
    file1.write(str(NOW))
    file1.write("\n")
-   file1.write("          -- End of Log --             ")
+   file1.write("          -- End of Log Entry --             ")
 
 # 11) Exit the program menu
 # a. (* do not use ‘break’)
