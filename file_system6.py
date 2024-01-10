@@ -412,7 +412,7 @@ def viewlogs():
     username = path_bytes2.decode('utf-8')
     logwrite(username, phrase, blank, blank2)
     #call the command to view the logs
-    subprocess.call(['less', '/var/sfssamplelog.txt'], shell=False)  
+    subprocess.call(['less', '/var/log/sfssamplelog.log'], shell=False)  
      
     
    
