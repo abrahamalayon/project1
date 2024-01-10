@@ -86,7 +86,12 @@ The input is not sanitized in this version. Therefore you can also use the follo
 
 
 
-Examples of LDAP syntax are below.  For example, the search base may be "dc=example,dc=com" when prompted for search base.  The LDAP search and download function works, but you should review the documentation.  :
+Examples of LDAP syntax are below.  For example, the search base may be "dc=example,dc=com" when prompted for search base.  The LDAP search and download function works, but you should review the documentation at the following site:  
+
+https://ldap3.readthedocs.io/en/latest/  
+
+Here is an excerpt of relevant information:
+
 
 - `ldapsearch <base> <filter>`: Searches for entries in the LDAP server that match the given base and filter. The base is the starting point of the search, and the filter is the criteria for selecting entries. For example, `ldapsearch "dc=example,dc=com" "(objectClass=person)"` will search for all entries that are persons in the example.com domain.
 - `ldapdownload <base> <filter> <file>`: Downloads a file from the LDAP server that matches the given base and filter, and saves it to the file system with the given name. The base and filter are the same as in the ldapsearch command. For example, `ldapdownload "dc=example,dc=com" "(cn=alice)" alice.txt` will download the file associated with the entry that has the common name alice in the example.com domain, and save it as alice.txt in the file system.
