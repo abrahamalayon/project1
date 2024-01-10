@@ -334,11 +334,11 @@ def downloadfile():
     #I also used a server from TurnKeyLinux
 
     # Ask the user for the ldap server address, port, username, password, and file name
-    server_address = input("Enter the ldap server address: ")
-    server_port = int(input("Enter the ldap server port: "))
-    username = input("Enter your ldap username: ")
-    password = input("Enter your ldap password: ")
-    file_name = input("Enter the file name to download: ")
+    server_address = input("Enter the LDAP Server Address: ")
+    server_port = int(input("Enter the LDAP Server Port: "))
+    username = input("Enter your LDAP Username: ")
+    password = input("Enter your LDAP Password: ")
+    file_name = input("Enter the File Name to Download: ")
 
     # Create a server object with the address and port
     server = ldap3.Server(server_address, port=server_port)
