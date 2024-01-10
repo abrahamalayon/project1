@@ -122,4 +122,4 @@ This project is open for contributions. If you want to contribute, please follow
 
 ## Credits
 
-This project was created by Abraham Alayon. The file_system6.py program was written by Abraham Alayon. The project was based on the specifications and requirements of the OS Security class.
+This project was created by Abraham Alayon. The file_system6.py program was written by Abraham Alayon.
