@@ -1,7 +1,7 @@
 
 # SimpleFileSystem with LDAP
 
-A Python program that simulates a file system with LDAP functionality.
+A Python program that manipulates a Linux file system and LDAP Server.
 
 ## Description
 
