@@ -1,13 +1,13 @@
 
 # SimpleFileSystem with LDAP
 
-A Python script that manipulates a Linux file system and LDAP Server.
+A Python script that manipulates the Linux file system and LDAP Server.
 
 ## Description
 
-This program allows you to create, modify, and delete files and directories on your Linux file system. You can also navigate through the file system read files, etc. The program also allows you to authenticate to, query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc. It writes a log in the var directory.  In the current version, traffic to LDAP is unencrypted. It will make changes to your system (i.e delete files, create files) so be careful.
+SimpleFileSystem was developed for a class project. This script allows you to create, modify, and delete files and directories on your Linux file system. You can also navigate through the file system and read files, rename and copy files too. In addition the script allows you to authenticate to, query and download files from an LDAP server using commands such as ldapsearch, ldapdownload, etc. It writes a log in the var directory.  In the current version, traffic to LDAP is unencrypted. This script will make changes to your system (i.e delete files, create files) so be careful.
 
-The purpose behind the program is to demonstrate accountability, authentication, nonrepudiation and eventually confidentiality, integrity.  The traffic is unencrypted to allow observation of packets with Wireshark.  But it should not be used for anything other than demonstration.  It is still being developed as a personal project.
+The purpose behind the program is to demonstrate using a script to execute commands on the operating system as well as some security goals, which I am in the process of improving. The traffic is unencrypted to allow observation of packets with Wireshark. The next phase is to add support for LDAPS as well as the find function in Linux. SimpleFileSystem is still being developed as a personal project.
 
 ## Installation
 
@@ -69,9 +69,11 @@ mv <src> <dest>: Moves a file from the source to the destination.
 
 find <name>: Searches for a file or directory with the given name in the file system.
 
+less <filename>:  This is used to read files in a convenient format.
+
 12 exits the program
 
-The input is not sanitized in this version. Therefore you can also use the following operators to modify the behavior of the commands, in addition to flags and arguments:
+The input is not sanitized in this version. Therefore you can also use the following operators to modify the behavior of the commands, in addition to flags and arguments for the commands:
 
 
 >: Redirects the standard output of a command to a file. For example, echo hello > file.txt will write the word “hello” to the file.txt file.
@@ -84,7 +86,7 @@ The input is not sanitized in this version. Therefore you can also use the follo
 
 
 
-Examples of LDAP syntax are below.  For example, the search base may be "dc=example,dc=com" when prompted for search base.  :
+Examples of LDAP syntax are below.  For example, the search base may be "dc=example,dc=com" when prompted for search base.  The LDAP search and download function works, but you should review the documentation.  :
 
 - `ldapsearch <base> <filter>`: Searches for entries in the LDAP server that match the given base and filter. The base is the starting point of the search, and the filter is the criteria for selecting entries. For example, `ldapsearch "dc=example,dc=com" "(objectClass=person)"` will search for all entries that are persons in the example.com domain.
 - `ldapdownload <base> <filter> <file>`: Downloads a file from the LDAP server that matches the given base and filter, and saves it to the file system with the given name. The base and filter are the same as in the ldapsearch command. For example, `ldapdownload "dc=example,dc=com" "(cn=alice)" alice.txt` will download the file associated with the entry that has the common name alice in the example.com domain, and save it as alice.txt in the file system.
