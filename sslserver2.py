@@ -1,6 +1,5 @@
 
-#Abraham wrote the logging function on this script.
-#It was part of a group project with Quinten, Sarah and Vincent.
+
 #Server side of file transfer using TLS
 #Load Server Certificate to be shared via TLS handshake to client
 
